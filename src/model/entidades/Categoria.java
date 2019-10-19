@@ -7,14 +7,14 @@ public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	private String nome;
+	private String catNome;
 	
 	public Categoria() {
 	}
 
 	public Categoria(Integer id, String nome) {
 		this.id = id;
-		this.nome = nome;
+		this.catNome = nome;
 	}
 
 	public Integer getId() {
@@ -26,11 +26,11 @@ public class Categoria implements Serializable {
 	}
 
 	public String getNome() {
-		return nome;
+		return catNome;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.catNome = nome;
 	}
 
 	@Override
@@ -60,6 +60,6 @@ public class Categoria implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Categoria [id=" + id + ", nome=" + nome + "]";
+		return "Categoria [id=" + id + ", nome=" + catNome + "]";
 	}
 }
