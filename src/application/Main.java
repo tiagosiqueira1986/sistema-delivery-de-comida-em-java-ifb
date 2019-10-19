@@ -9,6 +9,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	
+	private static Scene mainScene; // guarda a cena da tela principal
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -17,15 +19,19 @@ public class Main extends Application {
 			
 			scrollPane.setFitToHeight(true);
 			scrollPane.setFitToWidth(true);
-			Scene mainScene = new Scene(scrollPane);
-			primaryStage.setScene(mainScene);
+			mainScene = new Scene(scrollPane); //cena da janela principal
+			primaryStage.setScene(mainScene); // palco da janela principal
 			primaryStage.setTitle("Burguer Delivery");
 			primaryStage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//método para pegar a cena principal
+	public static Scene getMainScene() {
+		return mainScene;
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}
