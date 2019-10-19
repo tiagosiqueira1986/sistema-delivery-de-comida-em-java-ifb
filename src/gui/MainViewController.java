@@ -3,6 +3,7 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import aplicacao.Main;
 import gui.util.Alertas;
@@ -37,34 +38,19 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemCategoriaAcao() {
-		carregarTela2("/gui/ListaDeCategorias.fxml");
+		carregarTela("/gui/ListaDeCategorias.fxml", (ControleListaDeCategoria controle) -> {
+			controle.setCategoriaServico(new CategoriaServico());
+			controle.atualizaTableView();
+		});
 	}
 	
 	@FXML
 	public void onMenuItemAjudaAcao() {
-		carregarTela("/gui/Sobre.fxml");
+		carregarTela("/gui/Sobre.fxml", x -> {});
 	}
 	
 	// função que abre uma tela secundária a partir da tela principal
-	private synchronized void carregarTela(String caminhoAbsoluto) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(caminhoAbsoluto));
-			VBox newVBox = loader.load();
-			
-			Scene mainScene = Main.getMainScene();
-			VBox mainVBox = (VBox)((ScrollPane) mainScene.getRoot()).getContent(); //VBox da janela principal, chama o primeiro elemento da janela principal
-			
-			Node mainMenu = mainVBox.getChildren().get(0);
-			mainVBox.getChildren().clear();
-			mainVBox.getChildren().add(mainMenu);
-			mainVBox.getChildren().addAll(newVBox.getChildren());
-		}
-		catch(IOException e) {
-			Alertas.showAlert("IO Exception", "Erro ao carregar a Tela", e.getMessage(), AlertType.ERROR);
-		}
-	}
-	
-	private synchronized void carregarTela2(String caminhoAbsoluto) {
+	private synchronized <T> void carregarTela(String caminhoAbsoluto, Consumer<T> initializingAction) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(caminhoAbsoluto));
 			VBox newVBox = loader.load();
@@ -77,9 +63,8 @@ public class MainViewController implements Initializable {
 			mainVBox.getChildren().add(mainMenu);
 			mainVBox.getChildren().addAll(newVBox.getChildren());
 			
-			ControleListaDeCategorias controle =  loader.getController();
-			controle.setCategoriaServico(new CategoriaServico());
-			controle.atualizaTableView();
+			T controle = loader.getController();
+			initializingAction.accept(controle); 
 		}
 		catch(IOException e) {
 			Alertas.showAlert("IO Exception", "Erro ao carregar a Tela", e.getMessage(), AlertType.ERROR);

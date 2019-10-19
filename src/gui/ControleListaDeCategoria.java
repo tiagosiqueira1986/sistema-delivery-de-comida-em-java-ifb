@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import model.entidades.Categoria;
 import model.servicos.CategoriaServico;
 
-public class ControleListaDeCategorias implements Initializable {
+public class ControleListaDeCategoria implements Initializable {
 	
 	//declaração de dependencia
 	private CategoriaServico servico;
