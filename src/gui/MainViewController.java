@@ -15,6 +15,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import model.servicos.CategoriaServico;
 
 public class MainViewController implements Initializable {
 
@@ -36,7 +37,7 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemCategoriaAcao() {
-		carregarTela("/gui/ListaDeCategorias.fxml");
+		carregarTela2("/gui/ListaDeCategorias.fxml");
 	}
 	
 	@FXML
@@ -57,6 +58,28 @@ public class MainViewController implements Initializable {
 			mainVBox.getChildren().clear();
 			mainVBox.getChildren().add(mainMenu);
 			mainVBox.getChildren().addAll(newVBox.getChildren());
+		}
+		catch(IOException e) {
+			Alertas.showAlert("IO Exception", "Erro ao carregar a Tela", e.getMessage(), AlertType.ERROR);
+		}
+	}
+	
+	private synchronized void carregarTela2(String caminhoAbsoluto) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(caminhoAbsoluto));
+			VBox newVBox = loader.load();
+			
+			Scene mainScene = Main.getMainScene();
+			VBox mainVBox = (VBox)((ScrollPane) mainScene.getRoot()).getContent(); //VBox da janela principal, chama o primeiro elemento da janela principal
+			
+			Node mainMenu = mainVBox.getChildren().get(0);
+			mainVBox.getChildren().clear();
+			mainVBox.getChildren().add(mainMenu);
+			mainVBox.getChildren().addAll(newVBox.getChildren());
+			
+			ControleListaDeCategorias controle =  loader.getController();
+			controle.setCategoriaServico(new CategoriaServico());
+			controle.atualizaTableView();
 		}
 		catch(IOException e) {
 			Alertas.showAlert("IO Exception", "Erro ao carregar a Tela", e.getMessage(), AlertType.ERROR);

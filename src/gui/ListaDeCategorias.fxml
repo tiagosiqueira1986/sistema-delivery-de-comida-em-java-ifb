@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="378.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControleListaDeDepartamentos">
+<VBox prefHeight="378.0" prefWidth="458.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControleListaDeCategorias">
    <children>
       <Label alignment="TOP_LEFT" prefHeight="0.0" prefWidth="415.0" text="Cadastro de Categorias">
          <font>
