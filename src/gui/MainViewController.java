@@ -36,7 +36,7 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void onMenuItemCategoriaAcao() {
-		System.out.println("onMenuItemCategoriaAcao");
+		carregarTela("/gui/ListaDeCategorias.fxml");
 	}
 	
 	@FXML
