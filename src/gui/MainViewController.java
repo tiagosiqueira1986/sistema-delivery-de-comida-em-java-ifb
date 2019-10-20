@@ -67,7 +67,7 @@ public class MainViewController implements Initializable {
 			initializingAction.accept(controle); 
 		}
 		catch(IOException e) {
-			Alertas.showAlert("IO Exception", "Erro ao carregar a Tela", e.getMessage(), AlertType.ERROR);
+			Alertas.mostrarAlerta("IO Exception", "Erro ao carregar a Tela", e.getMessage(), AlertType.ERROR);
 		}
 	}
 	
