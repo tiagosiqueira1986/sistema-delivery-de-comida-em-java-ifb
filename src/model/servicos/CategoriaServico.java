@@ -13,4 +13,13 @@ public class CategoriaServico {
 	public List<Categoria> buscarTodos() {
 		return dao.buscarTodasCategorias();
 	}
+	
+	public void SalvarOuAtualizar(Categoria obj) {
+		if(obj.getId() == null) {
+			dao.InserirCategoria(obj);
+		}
+		else {
+			dao.atualizarCategoria(obj);
+		}
+	}
 }

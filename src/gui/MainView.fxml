@@ -16,8 +16,25 @@
                   <items>
                     <MenuItem fx:id="menuItemProduto" mnemonicParsing="false" onAction="#onMenuItemProdutoAcao" text="Produto" />
                         <MenuItem fx:id="menuItemCategoria" mnemonicParsing="false" onAction="#onMenuItemCategoriaAcao" text="Categoria" />
+                        <MenuItem mnemonicParsing="false" text="Atendente" />
+                        <MenuItem mnemonicParsing="false" text="Cliente" />
+                        <MenuItem mnemonicParsing="false" text="Estado" />
+                        <MenuItem mnemonicParsing="false" text="Cidade" />
                   </items>
                 </Menu>
+                  <Menu mnemonicParsing="false" text="Pedidos">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Inserir" />
+                        <MenuItem mnemonicParsing="false" text="Buscar" />
+                        <MenuItem mnemonicParsing="false" text="Atualizar" />
+                        <MenuItem mnemonicParsing="false" text="Deletar" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Relatórios">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Vendas" />
+                    </items>
+                  </Menu>
                 <Menu fx:id="menuItemAjuda" mnemonicParsing="false" onAction="#onMenuItemAjudaAcao" text="Ajuda">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Sobre" />

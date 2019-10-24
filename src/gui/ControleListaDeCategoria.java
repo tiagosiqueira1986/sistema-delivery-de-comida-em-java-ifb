@@ -86,6 +86,7 @@ public class ControleListaDeCategoria implements Initializable {
 			
 			FormControleCategoria controle = loader.getController();
 			controle.setCategoria(obj);
+			controle.setCategoriaServico(new CategoriaServico());
 			controle.atualizaForm();
 			
 			Stage tempStage = new Stage();
