@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="160.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="160.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FormControleCategoria">
    <children>
       <GridPane layoutX="23.0" layoutY="28.0" prefHeight="94.0" prefWidth="443.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
@@ -25,13 +25,13 @@
          <children>
             <Label text="Id" />
             <Label text="Nome" GridPane.rowIndex="1" />
-            <TextField editable="false" GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label textFill="#d31313" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="txtId" editable="false" GridPane.columnIndex="1" />
+            <TextField fx:id="txtNome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="labelDeErroNome" textFill="#d31313" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <Button mnemonicParsing="false" text="Salvar" />
-                  <Button mnemonicParsing="false" text="Cancelar" />
+                  <Button fx:id="btSalvar" mnemonicParsing="false" onAction="#acaoDeSalvar" text="Salvar" />
+                  <Button fx:id="btCancelar" mnemonicParsing="false" onAction="#acaoDeCancelar" text="Cancelar" />
                </children>
             </HBox>
          </children>
