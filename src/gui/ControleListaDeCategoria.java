@@ -49,7 +49,8 @@ public class ControleListaDeCategoria implements Initializable {
 	@FXML
 	public void onBtNovaAcao(ActionEvent evento) {
 		Stage parentStage = Utils.StageAtual(evento);
-		criaFormularioCadastro("/gui/FormularioDeCategoria.fxml", parentStage);
+		Categoria obj = new Categoria();
+		criaFormularioCadastro(obj, "/gui/FormularioDeCategoria.fxml", parentStage);
 	}
 	
 	public void setCategoriaServico(CategoriaServico servico) {
@@ -78,10 +79,14 @@ public class ControleListaDeCategoria implements Initializable {
 		tableViewCategoria.setItems(obsList);
 	}
 	
-	private void criaFormularioCadastro(String nomeAbsoluto, Stage parentStage) {
+	private void criaFormularioCadastro(Categoria obj, String nomeAbsoluto, Stage parentStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(nomeAbsoluto));
 			Pane pane = loader.load();
+			
+			FormControleCategoria controle = loader.getController();
+			controle.setCategoria(obj);
+			controle.atualizaForm();
 			
 			Stage tempStage = new Stage();
 			tempStage.setTitle("Insira os dados da nova categoria");
