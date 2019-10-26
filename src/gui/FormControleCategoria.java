@@ -3,7 +3,9 @@ package gui;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import db.DbException;
 import gui.listeners.DataChangeListener;
@@ -17,8 +19,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import model.entidades.Categoria;
-import model.servicos.CategoriaServico;
+import model.entities.Categoria;
+import model.exceptions.ValidadorDeExcecoes;
+import model.services.CategoriaServico;
 
 public class FormControleCategoria implements Initializable{
 	
@@ -76,6 +79,9 @@ public class FormControleCategoria implements Initializable{
 			notifyDataChangeListeners();
 			Utils.StageAtual(event).close();
 		}
+		catch(ValidadorDeExcecoes e) {
+			setMensagemDeErro(e.getErros());
+		}
 		catch (DbException e){
 			Alertas.mostrarAlerta("Erro ao salvar...", null,e.getMessage(), AlertType.ERROR);
 		}
@@ -91,8 +97,16 @@ public class FormControleCategoria implements Initializable{
 	private Categoria getFormData() {
 		Categoria obj = new Categoria();
 		
+		ValidadorDeExcecoes excecao = new ValidadorDeExcecoes("Erro de validação...");
 		obj.setId(Utils.passarParaInt(txtId.getText()));
+		
+		if(txtNome.getText() == null || txtNome.getText().trim().equals(" "));
+			excecao.adicionaErro("nome","O campo não pode ser vazio...");
 		obj.setNome(txtNome.getText());
+		
+		if(excecao.getErros().size() > 0) {
+			throw excecao;
+		}
 		
 		return obj;
 	}
@@ -121,4 +135,10 @@ public class FormControleCategoria implements Initializable{
 		txtNome.setText(categ.getNome());
 	}
 	
+	private void setMensagemDeErro(Map<String, String> erros) {
+		Set<String> campos = erros.keySet();
+		
+		if(campos.contains("nome")) {
+			labelDeErroNome.setText(erros.get("nome"));		}
+	}
 }

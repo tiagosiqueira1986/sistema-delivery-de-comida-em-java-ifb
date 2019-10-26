@@ -1,4 +1,4 @@
-package model.dao.implementacao;
+package model.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import db.DB;
 import db.DbException;
 import db.DbIntegrityException;
 import model.dao.CategoriaDao;
-import model.entidades.Categoria;
+import model.entities.Categoria;
 
 public class CategoriaDaoJDBC implements CategoriaDao {
 

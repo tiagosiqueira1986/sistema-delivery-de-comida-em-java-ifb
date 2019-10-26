@@ -1,8 +1,8 @@
 package model.dao;
 
 import db.DB;
-import model.dao.implementacao.CategoriaDaoJDBC;
-import model.dao.implementacao.ProdutoDaoJDBC;
+import model.dao.impl.CategoriaDaoJDBC;
+import model.dao.impl.ProdutoDaoJDBC;
 /*
  * Serve para no momento da instânciação o objeto não acessar a implementação 
  * e sim a Interface

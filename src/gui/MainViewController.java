@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
 
-import aplicacao.Main;
+import applications.Main;
 import gui.util.Alertas;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
-import model.servicos.CategoriaServico;
+import model.services.CategoriaServico;
 
 public class MainViewController implements Initializable {
 

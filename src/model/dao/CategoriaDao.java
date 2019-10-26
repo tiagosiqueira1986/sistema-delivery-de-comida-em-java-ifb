@@ -2,7 +2,7 @@ package model.dao;
 
 import java.util.List;
 
-import model.entidades.Categoria;
+import model.entities.Categoria;
 
 public interface CategoriaDao {
 	

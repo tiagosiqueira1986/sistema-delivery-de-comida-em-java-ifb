@@ -1,4 +1,4 @@
-package model.dao.implementacao;
+package model.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,8 +14,8 @@ import com.mysql.jdbc.Statement;
 import db.DB;
 import db.DbException;
 import model.dao.ProdutoDao;
-import model.entidades.Categoria;
-import model.entidades.Produto;
+import model.entities.Categoria;
+import model.entities.Produto;
 
 public class ProdutoDaoJDBC implements ProdutoDao {
 	

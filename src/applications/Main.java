@@ -1,4 +1,4 @@
-package aplicacao;
+package applications;
 
 import java.io.IOException;
 

@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import aplicacao.Main;
+import applications.Main;
 import gui.listeners.DataChangeListener;
 import gui.util.Alertas;
 import gui.util.Utils;
@@ -24,8 +24,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.entidades.Categoria;
-import model.servicos.CategoriaServico;
+import model.entities.Categoria;
+import model.services.CategoriaServico;
 
 public class ControleListaDeCategoria implements Initializable, DataChangeListener {
 	

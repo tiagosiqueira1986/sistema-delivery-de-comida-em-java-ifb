@@ -1,10 +1,10 @@
-package model.servicos;
+package model.services;
 
 import java.util.List;
 
 import model.dao.CategoriaDao;
 import model.dao.FabricaDao;
-import model.entidades.Categoria;
+import model.entities.Categoria;
 
 public class CategoriaServico {
 	
