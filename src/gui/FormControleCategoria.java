@@ -1,9 +1,12 @@
 package gui;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import db.DbException;
+import gui.listeners.DataChangeListener;
 import gui.util.Alertas;
 import gui.util.Restricoes;
 import gui.util.Utils;
@@ -24,6 +27,9 @@ public class FormControleCategoria implements Initializable{
 	
 	//dependencia categoria servico
 	private CategoriaServico servico;
+	
+	//cria uma lista com os dados modificados para atualizar a lista após as alterações
+	private List<DataChangeListener> dataChangeListeners = new ArrayList<>();
 	
 	//controle das caixas do formulário de cadastro de categoria
 	@FXML
@@ -51,6 +57,10 @@ public class FormControleCategoria implements Initializable{
 		this.servico = servico;
 	}
 	
+	//sobrescrever os dados da lista
+	public void subscribeDataChanceListener(DataChangeListener listener) {
+		dataChangeListeners.add(listener);
+	}
 	//controle dos eventos dos botões
 	@FXML
 	public void acaoDeSalvar(ActionEvent event) {
@@ -63,6 +73,7 @@ public class FormControleCategoria implements Initializable{
 		try {
 			categ = getFormData();
 			servico.SalvarOuAtualizar(categ);
+			notifyDataChangeListeners();
 			Utils.StageAtual(event).close();
 		}
 		catch (DbException e){
@@ -70,6 +81,13 @@ public class FormControleCategoria implements Initializable{
 		}
 	}
 	
+	private void notifyDataChangeListeners() {
+		for(DataChangeListener listener : dataChangeListeners) {
+			listener.atualizarDados();
+		}
+		
+	}
+
 	private Categoria getFormData() {
 		Categoria obj = new Categoria();
 		

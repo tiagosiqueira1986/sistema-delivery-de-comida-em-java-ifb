@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import aplicacao.Main;
+import gui.listeners.DataChangeListener;
 import gui.util.Alertas;
 import gui.util.Utils;
 import javafx.collections.FXCollections;
@@ -26,7 +27,7 @@ import javafx.stage.Stage;
 import model.entidades.Categoria;
 import model.servicos.CategoriaServico;
 
-public class ControleListaDeCategoria implements Initializable {
+public class ControleListaDeCategoria implements Initializable, DataChangeListener {
 	
 	//declaração de dependencia
 	private CategoriaServico servico;
@@ -87,6 +88,7 @@ public class ControleListaDeCategoria implements Initializable {
 			FormControleCategoria controle = loader.getController();
 			controle.setCategoria(obj);
 			controle.setCategoriaServico(new CategoriaServico());
+			controle.subscribeDataChanceListener(this);
 			controle.atualizaForm();
 			
 			Stage tempStage = new Stage();
@@ -101,5 +103,11 @@ public class ControleListaDeCategoria implements Initializable {
 			//e.printStackTrace();
 			Alertas.mostrarAlerta("IO Exception", "Erro ao Carregar a Tela...", e.getMessage(), AlertType.ERROR);
 		}
+	}
+
+	@Override
+	public void atualizarDados() {
+		atualizaTableView();
+		
 	}
 }
